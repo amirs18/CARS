@@ -156,12 +156,19 @@ public class LiveData extends AppCompatActivity implements View.OnClickListener,
                         x=false;
 
                     }
+                    if (n&&msg.getData().getFloat("float temp")>100)  {
+                        addNotification();
+                        startService(new Intent(LiveData.this,Myservice.class));
+                        n=false;
+
+                    }
                     bundle1 = msg.getData();
                     bundle1.putString("string dis",msg.getData().getInt("int dis")-startkm+"km");
                     bundle1.putInt("max speed",max_speed);
-                    bundle1.putString("start_time", time1.monthDay + "." + time1.month +1+ "." + time1.year + " " + time1.hour + ":" + time1.minute);
+                    bundle1.putString("start_time", time1.monthDay + "." + (time1.month +1)+ "." + time1.year + " " + time1.hour + ":" + time1.minute);
                     bundle1.putDouble("double long",lon);
                     bundle1.putDouble("double lan",lan);
+
                     return true;
                 }
             });
@@ -231,6 +238,7 @@ public class LiveData extends AppCompatActivity implements View.OnClickListener,
             this.handler = handler1;
             this.device = device;
         }
+
 
         @Override
         public void run() {

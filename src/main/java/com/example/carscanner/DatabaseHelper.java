@@ -56,14 +56,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void open() {
-        db = this.getWritableDatabase();
-        Log.d("11", "db open");
-    }
 
-    public void close() {
-        db.close();
-    }
+
 
     public boolean AddData(Bundle bundle) {
 
